@@ -241,7 +241,8 @@
 
 <script>
   // countdown to Fri 25 Sep 2026, 3:00 PM Cairo time
-  const target = new Date('2026-09-25T15:00:00+02:00').getTime();
+  // Egypt DST (UTC+3) is in effect until late Oct, so Sep 25 is +03:00
+  const target = new Date('2026-09-25T15:00:00+03:00').getTime();
   const ar = s => String(s).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
   const pad = n => String(n).padStart(2, '0');
   const el = id => document.getElementById(id);

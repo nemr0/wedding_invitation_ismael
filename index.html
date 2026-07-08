@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دعوة كتب كتاب — أحمد و منه الله</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FBF5EA;
+    --cream-2: #F5EBD8;
+    --gold: #B08D3F;
+    --gold-soft: #C9AC6E;
+    --rose: #C4808A;
+    --ink: #4A3B2A;
+    --ink-soft: #7A6A52;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Cairo', sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse 120% 60% at 50% -5%, #FFF9EF 0%, transparent 60%),
+      radial-gradient(ellipse 90% 50% at 50% 105%, #F3E4CB 0%, transparent 60%),
+      linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    text-align: center;
+  }
+
+  /* ornamental double frame */
+  .frame { position: fixed; pointer-events: none; z-index: 50; }
+  .frame.outer { inset: 12px; border: 1.5px solid rgba(176,141,63,.55); border-radius: 14px; }
+  .frame.inner { inset: 19px; border: 1px solid rgba(176,141,63,.25); border-radius: 10px; }
+  .corner {
+    position: fixed; width: 46px; height: 46px; z-index: 51; pointer-events: none;
+    border: 2px solid var(--gold); opacity: .8;
+  }
+  .corner.tl { top: 12px; right: 12px; border-left: 0; border-bottom: 0; border-radius: 0 14px 0 0; }
+  .corner.tr { top: 12px; left: 12px; border-right: 0; border-bottom: 0; border-radius: 14px 0 0 0; }
+  .corner.bl { bottom: 12px; right: 12px; border-left: 0; border-top: 0; border-radius: 0 0 14px 0; }
+  .corner.br { bottom: 12px; left: 12px; border-right: 0; border-top: 0; border-radius: 0 0 0 14px; }
+
+  main { max-width: 680px; margin: 0 auto; padding: 60px 28px 70px; position: relative; z-index: 1; }
+
+  /* entrance animation */
+  @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  .rise { opacity: 0; animation: rise 1s cubic-bezier(.22,.8,.35,1) forwards; }
+  .d1 { animation-delay: .15s; } .d2 { animation-delay: .35s; } .d3 { animation-delay: .55s; }
+  .d4 { animation-delay: .75s; } .d5 { animation-delay: .95s; } .d6 { animation-delay: 1.15s; }
+  .d7 { animation-delay: 1.35s; }
+
+  .bismillah {
+    font-family: 'Amiri', serif; font-size: 24px; color: var(--gold);
+    margin-bottom: 30px;
+  }
+  .divider {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin: 18px auto; color: var(--gold);
+  }
+  .divider .line { width: 70px; height: 1px; background: linear-gradient(to var(--dir,left), var(--gold-soft), transparent); }
+  .divider svg { flex: none; }
+
+  .intro-1 { font-family: 'Aref Ruqaa', serif; font-size: 30px; color: var(--gold); margin-bottom: 10px; }
+  .intro-2 { font-size: 18px; color: var(--ink-soft); letter-spacing: .3px; }
+
+  /* couple image blended into background */
+  .portrait { position: relative; margin: 34px auto 10px; max-width: 300px; }
+  .portrait::before {
+    content: ''; position: absolute; inset: -12% -18%;
+    background: radial-gradient(ellipse 60% 55% at 50% 55%, rgba(201,172,110,.28) 0%, rgba(201,172,110,.10) 45%, transparent 72%);
+    animation: glow 5s ease-in-out infinite;
+  }
+  @keyframes glow { 0%,100% { opacity: .7; } 50% { opacity: 1; } }
+  .portrait img {
+    width: 100%; height: auto; display: block; position: relative;
+    /* fade the hard-cropped flower edges into the page background */
+    -webkit-mask-image:
+      linear-gradient(to bottom, black 78%, transparent 99%),
+      linear-gradient(to right, transparent 0%, black 9%, black 91%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to bottom, black 78%, transparent 99%),
+      linear-gradient(to right, transparent 0%, black 9%, black 91%, transparent 100%);
+    mask-composite: intersect;
+    filter: drop-shadow(0 18px 30px rgba(74,59,42,.18)) saturate(1.03);
+  }
+
+  .names {
+    font-family: 'Aref Ruqaa', serif; font-size: clamp(38px, 9vw, 52px); font-weight: 700;
+    color: var(--ink); line-height: 2; margin-top: 6px;
+  }
+  .names .amp { color: var(--gold); }
+
+  /* date card */
+  .card {
+    margin: 40px auto 0; padding: 30px 26px; max-width: 480px;
+    background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.35));
+    border: 1px solid rgba(176,141,63,.35); border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(74,59,42,.08);
+    backdrop-filter: blur(4px);
+  }
+  .card .mashiaa { font-family: 'Amiri', serif; font-size: 19px; color: var(--gold); margin-bottom: 12px; }
+  .card .date { font-family: 'Aref Ruqaa', serif; font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .card .time { font-size: 17px; color: var(--ink-soft); }
+
+  /* countdown */
+  .count-wrap { margin-top: 44px; }
+  .count-title { font-size: 15px; color: var(--ink-soft); margin-bottom: 18px; letter-spacing: .4px; }
+  .countdown { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .unit {
+    min-width: 82px; padding: 16px 10px 13px; border-radius: 12px;
+    background: linear-gradient(180deg, #FFFDF8, #F7EEDD);
+    border: 1px solid rgba(176,141,63,.4);
+    box-shadow: 0 8px 20px rgba(74,59,42,.10), inset 0 1px 0 #fff;
+  }
+  .unit b {
+    display: block; font-family: 'Aref Ruqaa', serif; font-size: 34px; font-weight: 700;
+    color: var(--gold); line-height: 1.1; font-feature-settings: 'tnum';
+  }
+  .unit span { font-size: 13px; color: var(--ink-soft); }
+
+  /* location */
+  .loc { margin-top: 52px; }
+  .loc h2 { font-family: 'Aref Ruqaa', serif; font-size: 28px; color: var(--gold); font-weight: 400; }
+  .loc .venue { font-size: 20px; font-weight: 500; margin-top: 14px; line-height: 1.8; }
+  .map-btn {
+    display: inline-flex; align-items: center; gap: 10px; margin-top: 24px;
+    padding: 14px 36px; border-radius: 40px; text-decoration: none;
+    font-family: 'Cairo', sans-serif; font-size: 16px; font-weight: 600;
+    color: #fff; background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+    box-shadow: 0 10px 24px rgba(176,141,63,.35);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .map-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(176,141,63,.45); }
+
+  footer { margin-top: 56px; font-family: 'Amiri', serif; font-size: 17px; color: var(--gold); }
+
+  /* floating petals */
+  .petal {
+    position: fixed; top: -30px; z-index: 0; pointer-events: none;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(-4vh) translateX(0) rotate(0deg); opacity: 0; }
+    8%   { opacity: .8; }
+    100% { transform: translateY(108vh) translateX(var(--sway)) rotate(360deg); opacity: .25; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rise { animation: none; opacity: 1; }
+    .petal { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame outer"></div>
+<div class="frame inner"></div>
+<div class="corner tl"></div><div class="corner tr"></div>
+<div class="corner bl"></div><div class="corner br"></div>
+
+<main>
+  <div class="bismillah rise">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+
+  <div class="divider rise d1">
+    <div class="line" style="--dir:right"></div>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.5 2.4-7.4L2 9.6h7.6z" fill="none" stroke="#B08D3F" stroke-width="1"/>
+    </svg>
+    <div class="line"></div>
+  </div>
+
+  <div class="rise d1">
+    <div class="intro-1">بكل الحب والود</div>
+    <div class="intro-2">نتشرف بدعوتكم لحفل كتب كتاب</div>
+  </div>
+
+  <div class="portrait rise d2">
+    <img src="assets/couple-illustration-cropped.png" alt="أحمد ومنه الله">
+  </div>
+
+  <h1 class="names rise d3">أَحْمَد <span class="amp">وَ</span> مِنَّة اللَّه</h1>
+
+  <div class="card rise d4">
+    <div class="mashiaa">وذلك بمشيئة الله</div>
+    <div class="date">يوم الجمعة ٢٥ سبتمبر ٢٠٢٦</div>
+    <div class="time">الساعة الثالثة عصراً</div>
+  </div>
+
+  <div class="count-wrap rise d5">
+    <div class="count-title">الوقت المتبقي لحفل كتب الكتاب</div>
+    <div class="countdown" id="countdown">
+      <div class="unit"><b id="cd-d">٠</b><span>يوم</span></div>
+      <div class="unit"><b id="cd-h">٠٠</b><span>ساعة</span></div>
+      <div class="unit"><b id="cd-m">٠٠</b><span>دقيقة</span></div>
+      <div class="unit"><b id="cd-s">٠٠</b><span>ثانية</span></div>
+    </div>
+  </div>
+
+  <div class="loc rise d6">
+    <div class="divider">
+      <div class="line" style="--dir:right"></div>
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2C8 2 5 5.2 5 9.2 5 14.4 12 22 12 22s7-7.6 7-12.8C19 5.2 16 2 12 2zm0 9.8a2.6 2.6 0 110-5.2 2.6 2.6 0 010 5.2z" fill="#B08D3F"/></svg>
+      <div class="line"></div>
+    </div>
+    <h2>العنوان</h2>
+    <div class="venue">ريماچ التجمع الخامس<br>قاعة لارين</div>
+    <a class="map-btn" href="https://maps.app.goo.gl/vR5aqpi7NH2V4HLA8?g_st=iw" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2C8 2 5 5.2 5 9.2 5 14.4 12 22 12 22s7-7.6 7-12.8C19 5.2 16 2 12 2zm0 9.8a2.6 2.6 0 110-5.2 2.6 2.6 0 010 5.2z" fill="#fff"/></svg>
+      عرض الموقع على الخريطة
+    </a>
+  </div>
+
+  <footer class="rise d7">ندعو الله أن يتم فرحتهما ♡</footer>
+</main>
+
+<script>
+  // countdown to Fri 25 Sep 2026, 3:00 PM Cairo time
+  const target = new Date('2026-09-25T15:00:00+02:00').getTime();
+  const ar = s => String(s).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+  const pad = n => String(n).padStart(2, '0');
+  const el = id => document.getElementById(id);
+  function tick() {
+    const diff = Math.max(0, target - Date.now());
+    el('cd-d').textContent = ar(Math.floor(diff / 864e5));
+    el('cd-h').textContent = ar(pad(Math.floor(diff / 36e5) % 24));
+    el('cd-m').textContent = ar(pad(Math.floor(diff / 6e4) % 60));
+    el('cd-s').textContent = ar(pad(Math.floor(diff / 1e3) % 60));
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // gentle falling petals
+  const colors = ['#E8C9A0', '#C4808A', '#D9BC85', '#EAD7B7'];
+  for (let i = 0; i < 14; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = 8 + Math.random() * 8;
+    p.style.cssText = `
+      left:${Math.random() * 100}vw;
+      width:${size}px; height:${size * 0.85}px;
+      background:${colors[i % colors.length]};
+      border-radius: 70% 0 70% 0;
+      opacity:.7;
+      --sway:${(Math.random() * 120 - 60).toFixed(0)}px;
+      animation-duration:${(9 + Math.random() * 9).toFixed(1)}s;
+      animation-delay:${(-Math.random() * 18).toFixed(1)}s;
+    `;
+    document.body.appendChild(p);
+  }
+</script>
+</body>
+</html>

@@ -48,15 +48,13 @@
   /* ornamental double frame */
   .frame { position: fixed; pointer-events: none; z-index: 50; }
   .frame.outer { inset: 12px; border: 1.5px solid rgba(176,141,63,.55); border-radius: 14px; }
-  .frame-blur {
-    position: fixed; inset: 0; z-index: 49; pointer-events: none;
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-   
-    border: 13px solid transparent; border-radius: 27px;
-    mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-    -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-    mask-composite: exclude; -webkit-mask-composite: xor;
-  }
+  /* ponytail: 4 strips instead of one masked overlay — iOS Safari renders backdrop-filter+mask as flat color */
+  .frame-blur { position: fixed; z-index: 49; pointer-events: none;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .frame-blur.t { top: 0; left: 0; right: 0; height: 13px; }
+  .frame-blur.b { bottom: 0; left: 0; right: 0; height: 13px; }
+  .frame-blur.l { left: 0; top: 13px; bottom: 13px; width: 13px; }
+  .frame-blur.r { right: 0; top: 13px; bottom: 13px; width: 13px; }
   .frame.inner { inset: 19px; border: 1px solid rgba(176,141,63,.25); border-radius: 10px; }
   .corner {
     position: fixed; width: 46px; height: 46px; z-index: 51; pointer-events: none;
@@ -180,7 +178,7 @@
 </head>
 <body>
 
-<div class="frame-blur"></div>
+<div class="frame-blur t"></div><div class="frame-blur b"></div><div class="frame-blur l"></div><div class="frame-blur r"></div>
 <div class="frame outer"></div>
 <div class="frame inner"></div>
 <div class="corner tl"></div><div class="corner tr"></div>
